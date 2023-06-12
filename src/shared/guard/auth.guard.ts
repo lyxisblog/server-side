@@ -3,7 +3,8 @@ import { Injectable, CanActivate, HttpException, HttpStatus, ExecutionContext, }
 export class AuthGuard implements CanActivate {
   // 白名单数组
   private urlList: string[] = [
-    '/api/company'
+    '/api/company',
+    '/api/company/create',
   ];
 
   // context 请求的(Response/Request)的引用
@@ -14,9 +15,8 @@ export class AuthGuard implements CanActivate {
     // 获取请求头中的token字段
     const token = context.switchToRpc().getData().headers.token;
     // 如果白名单内的路由就不拦截直接通过
-    if (this.hasUrl(this.urlList, request.url)) {
-      return true;
-    }
+    if (this.hasUrl(this.urlList, request.url)) return true;
+
     // 验证token的合理性以及根据token做出相应的操作
     if (token) {
       try {
@@ -34,7 +34,6 @@ export class AuthGuard implements CanActivate {
         HttpStatus.UNAUTHORIZED,
       );
     }
-    return true;
   };
 
   // 验证该次请求是否为白名单内的路由

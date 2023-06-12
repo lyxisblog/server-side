@@ -11,6 +11,12 @@ export interface CompanyServiceDto {
 @Injectable()
 export class CompanyService {
   constructor(
+    /* 
+      使用InjectRepository装饰器并引入Repository<>对象
+      这样就可以使用typeorm的Repository Api相关的操作
+      Repository Api：https://typeorm.biunav.com/zh/repository-api.html#repositoryapi 
+      注意Node是主表对应的实体类
+      */
     @InjectRepository(Node)
     private readonly postsRepository: Repository<Node>,
   ) { }

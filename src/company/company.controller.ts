@@ -1,5 +1,6 @@
 import { Controller, Body, Query, Param, Get, Post, Put, Delete, UseGuards, } from '@nestjs/common';
 import { CompanyService, CompanyServiceDto } from './company.service';
+import { Transaction } from 'typeorm';
 // import { ValidationPipe } from '../shared/pipe/validation.pipe';
 import { createDTO } from "../dto/create.dto";
 
