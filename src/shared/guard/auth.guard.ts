@@ -4,7 +4,6 @@ export class AuthGuard implements CanActivate {
   // 白名单数组
   private urlList: string[] = [
     '/api/company',
-    '/api/company/create',
   ];
 
   // context 请求的(Response/Request)的引用
